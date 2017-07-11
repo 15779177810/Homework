@@ -20,11 +20,11 @@ public class HomeWork77 {
 		
 		HomeWork77 hw=new HomeWork77();
 		
-		//创建输出流对象
+				//创建输出流对象
 				ObjectOutputStream fo=new ObjectOutputStream(new FileOutputStream(new File("5.txt")));
 				//创建输入流对象
 				ObjectInputStream fi=new ObjectInputStream(new FileInputStream(new File("5.txt")));
-		//用list
+		
 				TreeSet<Student> set=new TreeSet();
 				set.add(new Student("小夫",20,123));
 				set.add(new Student("大雄",21,124));
@@ -32,26 +32,26 @@ public class HomeWork77 {
 				set.add(new Student("胖虎",22,120));
 				set.add(new Student("静香",19,128));
 				fo.writeObject(set);
-			
 				fo.flush();
 				//关闭资源
 				fo.close();
-				//====================================
+				
 			
-				//读取对象
+				
 				
 				//Student ro = (Student) fi.readObject();
 			//	Iterator<Student> it = set.iterator();
 			//	while (it.hasNext())
 			//		System.out.println(it.next());
+				//通过ObjectInputStream的readObject（）方法读取对象
 				TreeSet<Student> set1=(TreeSet<Student>) fi.readObject();
 				for (Student student : set1) {
 				
 					System.out.println(student);
 				}
-			/*for(int i=0;i<set1.size();i++){
-				System.out.println(set1);
-			}*/
+			//for(int i=0;i<set1.size();i++){
+			//	System.out.println(set1);
+			//}
 				
 				
 				//fi.close();
@@ -72,6 +72,12 @@ public class HomeWork77 {
 			System.out.println("请输入学生学号");
 			int id=scan.nextInt();
 			hw.addStudent(name, age, id);//异常
+			
+			/*TreeSet<Student> set2=(TreeSet<Student>) fi.readObject();
+			for (Student student : set2) {
+			
+				System.out.println(student);
+			}*/
 			
 			System.out.println("是否继续操作");
 			System.out.println("按1 继续 操作 按2 退出");
@@ -126,28 +132,31 @@ public void  deleteStudent (int id2)throws Exception{
 	//创建输入流对象
 	ObjectInputStream fi=new ObjectInputStream(new FileInputStream(new File("5.txt")));
 	
-	TreeSet<Student> set1=(TreeSet<Student>) fi.readObject();
+	TreeSet<Student> set2=(TreeSet<Student>) fi.readObject();
 	/*for (Student student : set1) {
 	 	while(student.getId()==id2){
 		System.out.println(set1.remove(student));
 	 	break;
 	 	}
 	}*/
-	Iterator it = set1.iterator();
-	while(it.hasNext()){
-		for (Student student : set1) {
-	  if(student.getId()==id2){
-	      
-	       it.remove();
-	  }
-	}
-	}
+	Iterator it = set2.iterator();
 	
-
-/*for(int i=0;i<set1.size();i++){
-	System.out.println(set1);
-}*/
+	while(it.hasNext()){
+		//if(id2==it.next())
+		it.remove();
+		
+	/*  if(getId()==id2){
+	       set1.remove(student);
+	       break;
+	  }*/
 	}
+}
+
+
+//for(int i=0;i<set1.size();i++){
+//	System.out.println(set1);
+//}
+	
 	
 
 	
@@ -188,9 +197,7 @@ class Student  implements Serializable,Comparable<Student> {//
 		super();
 		// TODO 自动生成的构造函数存根
 	}
-	/* （非 Javadoc）
-	 * @see java.lang.Object#hashCode()
-	 */
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -199,9 +206,7 @@ class Student  implements Serializable,Comparable<Student> {//
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		return result;
 	}
-	/* （非 Javadoc）
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
+	
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -221,52 +226,34 @@ class Student  implements Serializable,Comparable<Student> {//
 			return false;
 		return true;
 	}
-	/* （非 Javadoc）
-	 * @see java.lang.Object#toString()
-	 */
 	
-	/**
-	 * @return name
-	 */
 	public String getName() {
 		return name;
 	}
-	/**
-	 * @param name 要设置的 name
-	 */
+	
 	public void setName(String name) {
 		this.name = name;
 	}
-	/**
-	 * @return age
-	 */
+	
 	public int getAge() {
 		return age;
 	}
-	/**
-	 * @param age 要设置的 age
-	 */
+	
 	public void setAge(int age) {
 		this.age = age;
 	}
-	/**
-	 * @return id
-	 */
+	
 	public int getId() {
 		return id;
 	}
-	/**
-	 * @param id 要设置的 id
-	 */
+	
 	public void setId(int id) {
 		this.id = id;
 	}
 	public String toString() {
 		return "Student [name=" + name + ", age=" + age + ", id=" + id + "]";
 	}
-	/**
-	 * @param id 要设置的 id
-	 */
+	
 	public int compareTo(Student o) {//记得要写   不能 不写。。。。。。。。。
 		// TODO 自动生成的方法存根
 		return this.id-o.id;

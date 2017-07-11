@@ -1,7 +1,6 @@
 
 
-/*
-	import java.util.ArrayList;
+	/*import java.util.ArrayList;
 	import java.util.Date;
 	import java.util.TreeSet;
 	import java.io.File;
@@ -37,7 +36,7 @@
 			{
 				sb.append(new String(cbuf,0,count));//???	
 			}
-			//System.out.println(sb);
+			System.out.println(sb);
 			//学号正旭
 			TreeSet<Student> ts=new TreeSet();
 			//获取的字符串进行分割以： 分割
@@ -52,17 +51,23 @@
 				for(String string2 :s2){
 			//		System.out.println(string2);
 					String []s3 =string2.split("=");
+					//获取xiaomin     获取 age 20   获取id 20
 					list.add(s3[1]);
+					
+			//	System.out.println("============"+list.get(0));	
 					for(String string3 :s3){
 						System.out.println(string3);
 						}
 					
 					}ts.add(new Student(list.get(0),Integer.valueOf(list.get(1)),Integer.valueOf(list.get(2))));
-				//System.out.println("=======");
+					//System.out.println("=========="+list.get(0));
+					//System.out.println("=======");
 			}//System.out.println("=======");
 					//拼接成学生对象
 			//输出到控制台上面
+			
 			System.out.println(ts);
+			
 		}
 		
 
@@ -70,7 +75,7 @@
 
 		
 
-	class tudent implements Comparable<Student>{
+	class Student implements Comparable<Student>{
 		private String name;
 		private int age;
 		private int id;
@@ -136,5 +141,4 @@
 			// TODO Auto-generated method stub
 			return this.id-o.id;
 		}
-	}
-*/
+	}*/

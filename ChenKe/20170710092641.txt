@@ -1,0 +1,1 @@
+name=xiaomin, age=20, id=20:name=xiaohong, age=10, id=30:name=xiaogang, age=60, id=10:
