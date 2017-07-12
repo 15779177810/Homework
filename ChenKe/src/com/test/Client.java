@@ -19,7 +19,7 @@ public static void main(String[] args) throws Exception {
 	OutputStream ots =s.getOutputStream();
 	ots.write("第一个tcp程序".getBytes("gbk"));
 	//!!!!!!!!!!!
-	s.shutdownOutput();
+	s.shutdownInput();
 	ots.flush();
 	//接受来自服务端的内容
 	InputStream in=s.getInputStream();
